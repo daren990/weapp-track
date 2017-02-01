@@ -1,0 +1,27 @@
+<import src="_track_result.wxml" />
+<view class="container">
+  <block wx:if="{{tracking}}">
+    <view class="spinner"></view>
+    <view class="f-12 mt-10 text-muted">正在为您查询，请稍后...</view>
+  </block>
+  <view wx:else class="track-detail">
+    <view class="track-title {{titleInfo.css}}">
+      <icon type="{{titleInfo.iconType}}" size="40" />
+      <view class="track-title-right">
+        <text class="track-number">{{result.TrackingNumber}}</text>
+        <view wx:if="{{result.Exception==='None'}}" class="track-state">
+          {{result.StatusDescription}}
+          <label class="text-muted">（{{result.Duration}}）</label>
+        </view>
+      </view>
+    </view>
+    <view class="track-history-empty" wx:if="{{result.Exception!=='None'}}">
+      <icon type="info_circle" size="45" color="orange" />
+      <text>
+        您的包裹查询不到跟踪信息。
+      </text>
+    </view>
+    <template is="trackResult" wx:if="{{result.Destination.Carrire.Code}}" data="{{name:'目的地',...result.Destination}}" />
+    <template is="trackResult" wx:if="{{result.Original.Carrire.Code}}" data="{{name:'发件地',...result.Original}}" />
+  </view>
+</view>

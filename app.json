@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/track/track"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f5b855",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle":"black"
+  }
+}
